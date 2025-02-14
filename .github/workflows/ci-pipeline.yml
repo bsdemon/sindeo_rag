@@ -28,7 +28,8 @@ jobs:
           uv pip install pylint black
 
       - name: Run pylint
-        run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
+        run: python -m pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
+        # run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
 
       - name: Run black
         run: black . --check
