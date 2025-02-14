@@ -27,7 +27,7 @@ jobs:
           uv sync --all-extras --dev
 
       - name: Run pylint
-        run: uvx pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
+        run: uvx ruff check src/
 
       - name: Run black
         run: uvx black . --check
