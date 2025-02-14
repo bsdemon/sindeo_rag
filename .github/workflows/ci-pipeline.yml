@@ -18,11 +18,15 @@ jobs:
           cache: 'pip'
       - name: Install uv
         uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
       - name: Install the project
         run: |
           uv sync --all-extras --dev
           uv pip install pylint black
+
       - name: Run pylint
         run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
 
