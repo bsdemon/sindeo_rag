@@ -25,13 +25,12 @@ jobs:
       - name: Install the project
         run: |
           uv sync --all-extras --dev
-          uv add pylint black
 
       - name: Run pylint
-        run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
+        run: uvx pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
 
       - name: Run black
-        run: black . --check
+        run: uvx black . --check
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
