@@ -33,3 +33,8 @@ Sindeo RAG
     ```bash
     uv sync
     ```
+
+1. Install precomit hooks
+    ```bash
+    pre-commit install
+    ```
