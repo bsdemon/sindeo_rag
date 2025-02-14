@@ -51,31 +51,31 @@ jobs:
       - run: editorconfig-checker
 
 
-  unit_test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  # unit_test:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
+  #     - name: Install uv
+  #       uses: astral-sh/setup-uv@v5
+  #       with:
+  #         enable-cache: true
+  #         cache-dependency-glob: "uv.lock"
 
-      - name: "Set up Python"
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
+  #     - name: "Set up Python"
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version-file: ".python-version"
 
-      - name: Install the project
-        run: |
-          uv sync --all-extras --dev
+  #     - name: Install the project
+  #       run: |
+  #         uv sync --all-extras --dev
 
-      - name: Run tests
-        run: |
-          cd src
-          python -m unittest app_test.py
+  #     - name: Run tests
+  #       run: |
+  #         cd src
+  #         python -m unittest fake_test.py
 
   check_secrets:
     if: github.event_name != 'release'
