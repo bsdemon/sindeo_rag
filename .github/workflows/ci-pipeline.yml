@@ -25,11 +25,10 @@ jobs:
       - name: Install the project
         run: |
           uv sync --all-extras --dev
-          uv pip install pylint black
+          uv add pylint black
 
       - name: Run pylint
-        run: python -m pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
-        # run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
+        run: pylint --disable=C0111,C0114,C0115,C0116 $(git ls-files '*.py')
 
       - name: Run black
         run: black . --check
